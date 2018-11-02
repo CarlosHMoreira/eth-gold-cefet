@@ -118,7 +118,7 @@
   "defaultProject": "angular-truffle-box",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "cft",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
