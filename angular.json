@@ -115,11 +115,11 @@
       }
     }
   },
-  "defaultProject": "angular-truffle-box",
+  "defaultProject": "cefet-eth",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "cft",
-      "styleext": "css"
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
