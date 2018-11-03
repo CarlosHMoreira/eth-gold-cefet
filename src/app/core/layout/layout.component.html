@@ -5,15 +5,28 @@
       <mat-icon>menu</mat-icon>
     </button>
     <span>{{title}}</span>
+    <a class="logo" ><img class="logo-img" src="../../../assets/images/logo/coin.png"/></a>
   </mat-toolbar-row>
 
 </mat-toolbar>
 
-<mat-drawer-container class="example-container" [hasBackdrop]="false">
+<mat-drawer-container class="container" [hasBackdrop]="true">
 
-  <mat-drawer #drawer [mode]="over">I'm a drawer</mat-drawer>
+  <mat-drawer class="sidenav" #drawer [mode]="over" role="navigation">
+      
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of menu" [routerLinkActive]="['active']" routerLink="{{ item.route }}">
+        <mat-icon matListIcon>{{item?.icon}}</mat-icon>
+        <h3 matLine> {{item.text}} </h3>
+        <p matLine>
+          <span> {{item.description}} </span>
+        </p>
+      </a>
+    </mat-nav-list>
 
-  <mat-drawer-content>
+  </mat-drawer>
+
+  <mat-drawer-content class="sidenav-content">
   </mat-drawer-content>
 
 </mat-drawer-container>

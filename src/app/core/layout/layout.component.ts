@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+interface MenuItem {
+  text: string;
+  description: string;
+  route: string;
+  icon?: string;
+}
+
 @Component({
   selector: 'cft-layout',
   templateUrl: './layout.component.html',
@@ -7,7 +14,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  title = 'Eth-Cefet Gold Coin';
+  title = 'Gold Coin';
+
+  menu: MenuItem[] = [
+    {
+      text: 'Transfer',
+      description: 'Transfer gold to a address',
+      route: '/',
+      icon: 'attach_money'
+    }
+  ];
 
   constructor() { }
 
