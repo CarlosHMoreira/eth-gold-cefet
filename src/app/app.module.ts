@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material/material.module';
-import {MetaModule} from './meta/meta.module';
+import { AppRoutesModule } from './routing/app.routing.module';
+import { MetaModule } from './meta/meta.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
+    AppRoutesModule,
     HttpClientModule,
     MaterialModule,
     CoreModule,
