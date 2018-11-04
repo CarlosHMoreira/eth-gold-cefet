@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 
 import { LayoutComponent } from './layout/layout.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    SharedModule
   ],
   declarations: [LayoutComponent],
   exports: [
