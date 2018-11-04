@@ -119,7 +119,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "cft",
-      "styleext": "scss"
+      "styleext": "css"
     },
     "@schematics/angular:directive": {
       "prefix": "app"
