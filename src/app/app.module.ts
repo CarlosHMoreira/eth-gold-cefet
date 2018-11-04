@@ -9,6 +9,7 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutesModule } from './routing/app.routing.module';
 import { MetaModule } from './meta/meta.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CoreModule } from './core/core.module';
     HttpClientModule,
     MaterialModule,
     CoreModule,
+    SharedModule,
     MetaModule
   ],
   providers: [],
