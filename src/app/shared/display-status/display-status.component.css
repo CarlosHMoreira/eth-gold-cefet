@@ -1,0 +1,27 @@
+.status-indicator:after {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #68de50;
+    box-shadow: 0px 0px 7px 2px #68de50;
+}
+
+
+@keyframes flashing {
+    0% {
+        box-shadow: 0px 0px 7px 2px red;
+    }
+    
+    100% {
+        box-shadow: 0px 0px 7px 3px red;
+    }
+}
+  
+.status-indicator.error:after {
+    background-color: #fe1010;
+    box-shadow: 0px 0px 7px 2px red;
+    animation: flashing 1.5s ease-in-out 0s infinite;
+}
+
