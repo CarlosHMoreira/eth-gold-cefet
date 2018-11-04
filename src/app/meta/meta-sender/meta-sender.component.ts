@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Web3Service} from '../../util/web3.service';
+import {Web3Service} from '../../shared/services/web3.service';
 import { MatSnackBar } from '@angular/material';
 
 declare let require: any;
 const metacoin_artifacts = require('../../../../build/contracts/MetaCoin.json');
 
 @Component({
-  selector: 'app-meta-sender',
+  selector: 'cft-meta-sender',
   templateUrl: './meta-sender.component.html',
   styleUrls: ['./meta-sender.component.css']
 })
