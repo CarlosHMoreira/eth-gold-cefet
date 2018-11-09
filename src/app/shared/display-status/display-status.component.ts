@@ -12,14 +12,22 @@ export class DisplayStatusComponent implements OnInit {
   title = 'You are not connected yet!';
   description = 'Check out your Metamask account or your network connection.';
 
-  constructor(web3Service: Web3Service) { }
+  constructor(private web3Service: Web3Service) { }
 
   ngOnInit() {
+    this.tryToConnect();
   }
 
-  tryToConnect(event) {
-    console.log(event);
-    this.connected = !this.connected;
+  private tryToConnect() {
+    this.web3Service.accountsObservable.subscribe(
+      accounts => {
+         if (accounts.length) {
+           this.connected = true;
+           this.title = 'You are connected!';
+           this.description = 'Application running...';
+         }
+      }
+    );
   }
 
 }

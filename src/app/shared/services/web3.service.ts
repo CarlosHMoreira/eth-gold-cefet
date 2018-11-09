@@ -1,19 +1,23 @@
 import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
 import * as contract from 'truffle-contract';
-import {Subject} from 'rxjs';
 declare let require: any;
 const Web3 = require('web3');
 
 
 declare let window: any;
 
-@Injectable()
+@Injectable(
+  {
+    providedIn: 'root'
+  }
+)
 export class Web3Service {
   private web3: any;
   private accounts: string[];
   public ready = false;
   public MetaCoin: any;
-  public accountsObservable = new Subject<string[]>();
+  public accountsObservable = new BehaviorSubject<string[]>([]);
 
   constructor() {
     window.addEventListener('load', (event) => {
@@ -32,7 +36,7 @@ export class Web3Service {
       // Hack to provide backwards compatibility for Truffle, which uses web3js 0.20.x
       Web3.providers.HttpProvider.prototype.sendAsync = Web3.providers.HttpProvider.prototype.send;
       // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-      this.web3 = new Web3(new Web3.providers.HttpProvider('http://127.0.0.1:8545'));
+      this.web3 = new Web3(new Web3.providers.HttpProvider('http://172.17.0.1:7545'));
     }
 
     setInterval(() => this.refreshAccounts(), 100);

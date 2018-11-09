@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../material/material.module';
 import { DisplayStatusComponent } from './display-status/display-status.component';
-import { Web3Service } from './services/web3.service';
 
 @NgModule({
   imports: [
@@ -13,8 +12,6 @@ import { Web3Service } from './services/web3.service';
   exports: [
     DisplayStatusComponent
   ],
-  providers: [
-    Web3Service
-  ],
+  providers: [  ],
 })
 export class SharedModule { }
