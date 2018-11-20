@@ -5,6 +5,7 @@ import {
   MatCardModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSelectModule,
   MatToolbarModule,
   MatSidenavModule,
   MatIconModule,
@@ -18,16 +19,19 @@ import {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+
   ],
   exports: [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,

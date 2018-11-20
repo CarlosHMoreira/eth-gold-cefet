@@ -20,7 +20,13 @@ export class LayoutComponent implements OnInit {
     {
       text: 'Transfer',
       description: 'Transfer gold to a address',
-      route: '/',
+      route: '/transfer',
+      icon: 'attach_money'
+    },
+    {
+      text: 'Meta',
+      description: 'Component that already came ready',
+      route: '/meta',
       icon: 'attach_money'
     }
   ];

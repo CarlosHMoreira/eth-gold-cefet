@@ -10,10 +10,11 @@ import { AppRoutesModule } from './routing/app.routing.module';
 import { MetaModule } from './meta/meta.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { TransferModule } from './transfer/transfer.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -24,6 +25,7 @@ import { SharedModule } from './shared/shared.module';
     MaterialModule,
     CoreModule,
     SharedModule,
+    TransferModule,
     MetaModule
   ],
   providers: [],
