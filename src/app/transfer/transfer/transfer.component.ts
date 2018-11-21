@@ -19,8 +19,8 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.transferForm = this.formBuilder.group({
-      from: ['', Validators.required],
-      amount: ['', Validators.min(1)],
+      from: [null, Validators.required],
+      amount: [0, Validators.min(1)],
       to: ['', Validators.required]
     });
   }
