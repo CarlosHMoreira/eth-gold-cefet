@@ -5,11 +5,13 @@
   </mat-card-header>
   <mat-card-content>
 
-    <form [formGroup]="transferForm">
+    <form [formGroup]="transferForm" (submit)="transferGold($event)" >
 
       <mat-form-field>
         <mat-select placeholder="Address" formControlName="from">
           <mat-option [value]="null">None</mat-option>
+          <mat-option *ngFor="let account of accounts | async" value="account">{{account}}</mat-option>
+
         </mat-select>
 
         <mat-hint>This is the account address wich will send the GoldCoin</mat-hint>
@@ -37,10 +39,10 @@
         </mat-error>
       </mat-form-field>
 
+      <div class="actions">
+        <button mat-flat-button color="primary" [disabled]="!transferForm.valid" type="submit">Transfer</button>
+      </div>
     </form>
 
   </mat-card-content>
-  <mat-card-actions class="actions">
-    <button mat-flat-button color="primary" [disabled]="!transferForm.valid">Transfer</button>
-  </mat-card-actions>
 </mat-card>
