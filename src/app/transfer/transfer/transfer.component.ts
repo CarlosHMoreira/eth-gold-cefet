@@ -1,7 +1,7 @@
+import { Transfer } from './../../shared/models/transfer';
+import { GoldCoinService } from './../../shared/services/gold-coin.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, NgForm, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar} from '@angular/material';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Web3Service } from '../../shared/services/web3.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class TransferComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private web3Service: Web3Service,
+    private goldCoinService: GoldCoinService
     ) { }
 
   ngOnInit() {
@@ -26,14 +27,23 @@ export class TransferComponent implements OnInit {
 
   private buildForm() {
     this.transferForm = this.formBuilder.group({
-      from: [null, Validators.required],
-      amount: [0, Validators.min(1)],
-      to: ['', Validators.required]
+      sender: [null, Validators.required],
+      amount: [0, [Validators.min(1), Validators.required]],
+      receiver: ['', Validators.required]
     });
   }
 
   transferGold() {
-
+    const transfer = this.transferForm.getRawValue() as Transfer;
+    this.transferForm.disable();
+    setTimeout(() => {
+      this.goldCoinService.sendCoin(transfer).then(transaction => {
+        console.log(`Block tx hash: ${transaction}`);
+        this.transferForm.reset();
+        this.transferForm.markAsPristine();
+        this.transferForm.enable();
+      });
+    }, 3000);
   }
 
 }

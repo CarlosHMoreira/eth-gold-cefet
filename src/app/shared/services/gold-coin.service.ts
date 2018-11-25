@@ -1,8 +1,11 @@
 import { Transfer } from './../models/transfer';
 import { Web3Service } from './web3.service';
 import { Injectable } from '@angular/core';
+import { Observable, defer } from 'rxjs';
+import GOLDCOIN_ARTIFACTS from '../../../../build/contracts/MetaCoin.json';
 
-const GOLDCOIN_ARTIFACTS = require('../../../../build/contracts/MetaCoin.json');
+// declare let require: any;
+// const GOLDCOIN_ARTIFACTS = require('../../../../build/contracts/MetaCoin.json');
 
 @Injectable({
   providedIn: 'root'
@@ -16,27 +19,16 @@ export class GoldCoinService {
       .then(goldCoinAbstraction => this.goldCoinContract = goldCoinAbstraction);
   }
 
-  sendCoin(transfer: Transfer) {
+  async sendCoin(transfer: Transfer) {
     if (!this.goldCoinContract) {
-      throw new Error('Metacoin is not loaded, unable to send transaction');
+      throw new Error('GoldCoin is not loaded, unable to send transaction');
     }
-
+    console.log(transfer);
     console.log(`Sending ${transfer.amount} coins to ${transfer.receiver}`);
     console.log('Initiating transaction... (please wait)');
-
-    try {
-      const deployedMetaCoin = await this.MetaCoin.deployed();
-      const transaction = await deployedMetaCoin.sendCoin.sendTransaction(receiver, amount, {from: this.model.account});
-
-      if (!transaction) {
-        this.setStatus('Transaction failed!');
-      } else {
-        this.setStatus('Transaction complete!');
-      }
-    } catch (e) {
-      console.log(e);
-      this.setStatus('Error sending coin; see log.');
-    }
+        const deployedGoldCoinContract = await this.goldCoinContract.deployed();
+        return deployedGoldCoinContract.sendCoin
+                    .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender});
   }
 
 
