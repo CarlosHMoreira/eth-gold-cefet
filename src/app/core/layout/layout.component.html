@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+    <a class="logo" ><img class="logo-img" src="../../../assets/images/logo/coin.png"/></a>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
+<mat-drawer-container class="container" [hasBackdrop]="true">
+
+  <mat-drawer class="sidenav" #drawer [mode]="over" role="navigation">
+      
+    <mat-nav-list>
+      <cft-display-status></cft-display-status>
+      <a mat-list-item *ngFor="let item of menu" [routerLinkActive]="['active']" routerLink="{{ item.route }}">
+        <mat-icon matListIcon>{{item?.icon}}</mat-icon>
+        <h3 matLine> {{item.text}} </h3>
+        <p matLine>
+          <span> {{item.description}} </span>
+        </p>
+      </a>
+    </mat-nav-list>
+
+  </mat-drawer>
+
+  <mat-drawer-content class="sidenav-content">
+      <ng-content></ng-content>
+  </mat-drawer-content>
+
+</mat-drawer-container>

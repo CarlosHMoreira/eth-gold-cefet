@@ -1,0 +1,24 @@
+.container {
+    width: 100%;
+    min-height: 89vh;
+    background-color: #e7eaea;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    margin: .5em;
+}
+
+.logo-img {
+    width: 34px;
+}
+  
+.sidenav {
+    width: 342px;
+}
+
+.sidenav-content {
+    padding: 8px
+}
+

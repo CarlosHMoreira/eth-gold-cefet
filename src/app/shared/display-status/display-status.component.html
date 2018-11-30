@@ -1,0 +1,9 @@
+<mat-card>
+  <mat-card-header>
+    <div class="status-indicator-container" mat-card-avatar>
+      <div class="status-indicator" [ngClass]="{'error': !connected}"></div>
+    </div>
+    <mat-card-title>{{title}}</mat-card-title>
+    <mat-card-subtitle>{{description}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card> 

@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Balance of the accounts</mat-card-title>
+    <mat-card-subtitle>See how much gold each account has.</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-list *ngIf="accounts.length">
+      <h3 mat-subheader>Accounts</h3>
+
+      <mat-list-item *ngFor="let account of accounts">
+        <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+        <h4 mat-line class="amount-gold">{{ account.amountGold }}</h4>
+        <p mat-line>{{ account.address }}</p>
+      </mat-list-item>
+
+    </mat-list>
+  </mat-card-content>
+</mat-card>
