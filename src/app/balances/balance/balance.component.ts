@@ -9,7 +9,7 @@ import { GoldCoinService } from '../../shared/services/gold-coin.service';
 })
 export class BalanceComponent implements OnInit {
 
-  accounts: {address: string, amountGold: number}[];
+  accounts: {address: string, amountGold: number}[] = [];
 
   constructor(
     private web3Service: Web3Service,
@@ -17,12 +17,15 @@ export class BalanceComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.web3Service.accounts.forEach( async (address, index) => {
+    this.web3Service.accountsObservable.subscribe( accounts => {
+      accounts.forEach( async (address, index) => {
 
-      if (index === 0 ) { return; }
+        if (index === 0 ) { return; }
 
-      const amountGold = await this.goldCoinService.getBalance(address);
-      this.accounts.push({address, amountGold});
+        this.goldCoinService
+          .getBalance(address)
+          .then(amountGold => this.accounts.push({address, amountGold}));
+      });
     });
   }
 
