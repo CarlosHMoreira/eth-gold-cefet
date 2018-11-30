@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Web3Service } from '../../shared/services/web3.service';
+import { GoldCoinService } from '../../shared/services/gold-coin.service';
 
 @Component({
   selector: 'cft-balance',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BalanceComponent implements OnInit {
 
-  constructor() { }
+  accounts: {address: string, amountGold: number}[];
+
+  constructor(
+    private web3Service: Web3Service,
+    private goldCoinService: GoldCoinService
+  ) { }
 
   ngOnInit() {
+    this.web3Service.accounts.forEach( async (address, index) => {
+
+      if (index === 0 ) { return; }
+
+      const amountGold = await this.goldCoinService.getBalance(address);
+      this.accounts.push({address, amountGold});
+    });
   }
 
 }
