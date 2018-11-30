@@ -1,3 +1,4 @@
+import { BalancesModule } from './balances/balances.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +29,8 @@ import { DepositsModule } from './deposits/deposits.module';
     SharedModule,
     TransferModule,
     MetaModule,
-    DepositsModule
+    DepositsModule,
+    BalancesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
