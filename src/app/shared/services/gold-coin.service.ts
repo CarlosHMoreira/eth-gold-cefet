@@ -23,13 +23,11 @@ export class GoldCoinService {
     if (!this.goldCoinContract) {
       throw new Error('GoldCoin is not loaded, unable to send transaction');
     }
-    console.log(transfer);
     console.log(`Sending ${transfer.amount} coins to ${transfer.receiver}`);
     console.log('Initiating transaction... (please wait)');
         const deployedGoldCoinContract = await this.goldCoinContract.deployed();
         return deployedGoldCoinContract.sendCoin
-                    .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender});
+                    .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender})
+                    .then(transaction => console.log(`Transaction finished: ${transaction}`));
   }
-
-
 }
