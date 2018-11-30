@@ -21,6 +21,12 @@ export class LayoutComponent implements OnInit {
       text: 'Transfer',
       description: 'Transfer gold to a address',
       route: '/transfer',
+      icon: 'compare_arrows'
+    },
+    {
+      text: 'Deposit',
+      description: 'Deposit gold to a address',
+      route: '/deposit',
       icon: 'attach_money'
     }
   ];
