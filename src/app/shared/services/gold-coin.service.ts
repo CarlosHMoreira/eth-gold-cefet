@@ -9,22 +9,31 @@ import GOLDCOIN_ARTIFACTS from '../../../../build/contracts/GoldCoin.json';
 })
 export class GoldCoinService {
 
-  private goldCoinContract;
+  private deployedContract;
 
   constructor(private web3Service: Web3Service) {
     this.web3Service.artifactsToContract(GOLDCOIN_ARTIFACTS)
-      .then(goldCoinAbstraction => this.goldCoinContract = goldCoinAbstraction);
+      .then(goldCoinAbstraction => goldCoinAbstraction.deployed())
+      .then(deployedContract => this.deployedContract = deployedContract)
+      .then( () => {
+        if (!this.deployedContract) {
+           throw new Error('GoldCoin is not loaded, unable to send transaction');
+        }
+      });
   }
 
-  async sendCoin(transfer: Transfer) {
-    if (!this.goldCoinContract) {
-      throw new Error('GoldCoin is not loaded, unable to send transaction');
-    }
+  sendCoin(transfer: Transfer) {
     console.log(`Sending ${transfer.amount} coins to ${transfer.receiver}`);
     console.log('Initiating transaction... (please wait)');
-        const deployedGoldCoinContract = await this.goldCoinContract.deployed();
-        return deployedGoldCoinContract.sendCoin
-          .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender})
-          .then(transaction => console.log(`Transaction finished: ${transaction}`));
+        return this.deployedContract.sendCoin
+          .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender});
   }
+
+  depositCoin(deposit: Transfer) {
+    console.log(`Depositing ${deposit.amount} coins to ${deposit.receiver}`);
+    console.log('Initiating transaction... (please wait)');
+      return this.deployedContract.depositGold
+          .sendTransaction(deposit.receiver, deposit.amount, {from: this.web3Service.accounts[0]});
+  }
+
 }
