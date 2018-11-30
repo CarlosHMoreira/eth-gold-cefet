@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MetaSenderComponent } from '../meta/meta-sender/meta-sender.component';
 import { DisplayStatusComponent } from '../shared/display-status/display-status.component';
 import { TransferComponent } from '../transfer/transfer/transfer.component';
+import { DepositComponent } from '../deposits/deposit/deposit.component';
 
 const appRoutes: Routes = [
   {
@@ -19,8 +20,8 @@ const appRoutes: Routes = [
     component: TransferComponent
   },
   {
-    path: 'meta',
-    component: MetaSenderComponent
+    path: 'deposit',
+    component: DepositComponent
   }
 ];
 
