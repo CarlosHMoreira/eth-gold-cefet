@@ -14,9 +14,8 @@ declare let window: any;
 )
 export class Web3Service {
   private web3: any;
-  private accounts: string[];
+  public accounts: string[];
   public ready = false;
-  public MetaCoin: any;
   public accountsObservable = new BehaviorSubject<string[]>([]);
 
   constructor() {
@@ -45,8 +44,9 @@ export class Web3Service {
       return await this.artifactsToContract(artifacts);
     }
 
-    return contract(artifacts)
-      .setProvider(this.web3.currentProvider);
+    const goldCoinAbstraction = contract(artifacts);
+    goldCoinAbstraction.setProvider(this.web3.currentProvider);
+    return goldCoinAbstraction;
   }
 
   public refreshAccounts() {
