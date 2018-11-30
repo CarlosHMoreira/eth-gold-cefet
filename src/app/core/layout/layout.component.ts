@@ -28,6 +28,12 @@ export class LayoutComponent implements OnInit {
       description: 'Deposit gold to a address',
       route: '/deposit',
       icon: 'attach_money'
+    },
+    {
+      text: 'Balances',
+      description: 'See the accounts balance',
+      route: '/balances',
+      icon: 'account_balance_wallet'
     }
   ];
 

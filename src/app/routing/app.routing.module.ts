@@ -4,6 +4,7 @@ import { MetaSenderComponent } from '../meta/meta-sender/meta-sender.component';
 import { DisplayStatusComponent } from '../shared/display-status/display-status.component';
 import { TransferComponent } from '../transfer/transfer/transfer.component';
 import { DepositComponent } from '../deposits/deposit/deposit.component';
+import { BalanceComponent } from '../balances/balance/balance.component';
 
 const appRoutes: Routes = [
   {
@@ -22,6 +23,10 @@ const appRoutes: Routes = [
   {
     path: 'deposit',
     component: DepositComponent
+  },
+  {
+    path: 'balances',
+    component: BalanceComponent
   }
 ];
 
