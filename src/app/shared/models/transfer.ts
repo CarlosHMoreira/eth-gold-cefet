@@ -1,5 +1,5 @@
 export interface Transfer {
-  sender: string;
+  sender?: string;
   amount: number;
   receiver: string;
 }
