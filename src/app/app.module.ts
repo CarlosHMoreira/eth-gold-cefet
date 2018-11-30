@@ -11,6 +11,7 @@ import { MetaModule } from './meta/meta.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { TransferModule } from './transfer/transfer.module';
+import { DepositsModule } from './deposits/deposits.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TransferModule } from './transfer/transfer.module';
     CoreModule,
     SharedModule,
     TransferModule,
-    MetaModule
+    MetaModule,
+    DepositsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
