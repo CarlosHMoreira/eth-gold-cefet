@@ -30,7 +30,8 @@ export class DepositComponent implements OnInit {
     });
   }
 
-  depositGold() {
+  depositGold(event) {
+    event.preventDefault();
     this.depositForm.disable();
 
     const deposit = this.depositForm.getRawValue() as Transfer;
