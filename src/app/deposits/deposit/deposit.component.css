@@ -1,0 +1,29 @@
+.deposit-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.deposit-form__field {
+  margin: 0 1rem;
+}
+
+.deposit-form__field:first-of-type {
+  margin: 0 1rem;
+  width: 60%
+}
+
+.actions {
+  margin: 0 1rem;
+}
+
+@media (max-width: 993px) {
+  .deposit-form {
+    flex-direction: column;
+  }
+
+  .deposit-form__field {
+    margin: 1rem 1rem;
+    width: 60%
+  }
+}
