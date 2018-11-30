@@ -45,10 +45,8 @@ export class Web3Service {
       return await this.artifactsToContract(artifacts);
     }
 
-    const contractAbstraction = contract(artifacts);
-    contractAbstraction.setProvider(this.web3.currentProvider);
-    return contractAbstraction;
-
+    return contract(artifacts)
+      .setProvider(this.web3.currentProvider);
   }
 
   public refreshAccounts() {
