@@ -10,7 +10,7 @@ import { from, Observable } from 'rxjs';
 })
 export class GoldCoinService {
 
-  private goldCoinAbstraction;
+  goldCoinAbstraction;
 
   constructor(private web3Service: Web3Service) {
     this.extractContractAbstraction();
@@ -23,22 +23,24 @@ export class GoldCoinService {
 
   sendCoin(transfer: Transfer) {
     console.log(`Sending ${transfer.amount} coins to ${transfer.receiver}`);
-    console.log('Initiating transaction... (please wait)');
     return this.goldCoinAbstraction
       .deployed()
-      .sendCoin
-        .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender});
+      .then(instance =>
+        instance.sendCoin
+          .sendTransaction(transfer.receiver, transfer.amount, {from: transfer.sender})
+      );
   }
 
   depositCoin(deposit: Transfer) {
 
-    console.log(`Depositing ${deposit.amount} coins to ${deposit.receiver}`);
-    console.log('Initiating transaction... (please wait)');
+    console.log(`Depositing ${deposit.amount} coins in address ${deposit.receiver}`);
 
     return this.goldCoinAbstraction
       .deployed()
-      .depositGold
-        .sendTransaction(deposit.receiver, deposit.amount, {from: this.web3Service.accounts[0]});
+      .then(instance =>
+        instance.depositGold
+          .sendTransaction(deposit.receiver, deposit.amount, {from: this.web3Service.accounts[0]})
+      );
   }
 
   getBalance(address: string) {
