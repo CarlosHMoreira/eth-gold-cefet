@@ -22,8 +22,8 @@ contract GoldCoin {
 		return true;
 	}
 
-	function getBalance() public view returns(uint){
-		return balances[msg.sender];
+	function getBalance(address account) public view returns(uint){
+		return balances[account];
 	}
 
 	function depositGold(address newAccount, uint amount) public onlyOwner() {
